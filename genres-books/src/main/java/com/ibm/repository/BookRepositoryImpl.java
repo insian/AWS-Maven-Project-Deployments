@@ -45,21 +45,45 @@ public class BookRepositoryImpl implements BookRepository{
 	}
 	
 	@Override
-	public Genre updateGenreById(Genre genre) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean updateGenreById(Genre genre) {
+		try {
+			session = sessionFactory.openSession();
+			session.getTransaction().begin();
+			session.merge(genre);
+			session.getTransaction().commit();
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 
 	@Override
-	public Boolean deleteGenreById(int genreId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean deleteGenreById(Genre genre) {
+		try {
+			session = sessionFactory.openSession();
+			session.getTransaction().begin();
+			session.remove(genre);
+			session.getTransaction().commit();
+			return true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
 	public Book addBook(Book book) {
-		// TODO Auto-generated method stub
-		return null;
+		try{
+			session = sessionFactory.openSession();
+			session.getTransaction().begin();
+			session.merge(book);
+			session.getTransaction().commit();
+			return book;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 	
 	@Override
@@ -81,7 +105,7 @@ public class BookRepositoryImpl implements BookRepository{
 	}
 
 	@Override
-	public Boolean deleteBookById(int bookId) {
+	public Boolean deleteBookById(Book book) {
 		// TODO Auto-generated method stub
 		return null;
 	}

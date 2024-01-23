@@ -9,12 +9,12 @@ public interface BookService {
 	Genre addGenre(Genre genre);
 	List<Genre> getAllGenres();
 	Genre findGenreById(int genreId);
-	Genre updateGenreById(Genre genre);
-	Boolean deleteGenreById(int genreId);
+	Boolean updateGenreById(Genre genre);
+	Boolean deleteGenreById(Genre genre);
 	
 	Book addBook(Book book);
 	List<Book> getAllBooks();
 	Book findBookById(int bookId);
 	Book updateBookById(Book book);
-	Boolean deleteBookById(int bookId);
+	Boolean deleteBookById(Book book);
 }

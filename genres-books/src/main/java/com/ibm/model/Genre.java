@@ -12,12 +12,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name="genres")
 public class Genre {
@@ -33,13 +35,18 @@ public class Genre {
 	@Column(name="shelf_no")
 	private String shelfNo;
 	
-	@OneToMany(mappedBy = "genre", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@OneToMany(mappedBy = "genre", cascade = CascadeType.ALL)
 	private List<Book> books;
 
 	public Genre(String genreName, String shelfNo) {
 		super();
 		this.genreName = genreName;
 		this.shelfNo = shelfNo;
+	}
+
+	@Override
+	public String toString() {
+		return "Genre [genreId=" + genreId + ", genreName=" + genreName + ", shelfNo=" + shelfNo + "]";
 	}
 	
 	

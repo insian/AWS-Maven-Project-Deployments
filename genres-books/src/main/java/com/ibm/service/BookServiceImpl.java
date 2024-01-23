@@ -46,20 +46,21 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Genre updateGenreById(Genre genre) {
+	public Boolean updateGenreById(Genre genre) {
 		// TODO Auto-generated method stub
 		return bookRepo.updateGenreById(genre);
 	}
 
 	@Override
-	public Boolean deleteGenreById(int genreId) {
+	public Boolean deleteGenreById(Genre genre) {
 		// TODO Auto-generated method stub
-		return bookRepo.deleteGenreById(genreId);
+		return bookRepo.deleteGenreById(genre);
 	}
 
 	@Override
 	public Book addBook(Book book) {
 		// TODO Auto-generated method stub
+		book.setIsbnNo(generateId());
 		return bookRepo.addBook(book);
 	}
 	
@@ -82,9 +83,9 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Boolean deleteBookById(int bookId) {
+	public Boolean deleteBookById(Book book) {
 		// TODO Auto-generated method stub
-		return bookRepo.deleteBookById(bookId);
+		return bookRepo.deleteBookById(book);
 	}
 	
 
