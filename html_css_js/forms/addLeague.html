@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add a League</title>
+        <style>
+            body{
+                background-color: beige;
+            }
+            nav{
+                text-align: center;
+                width:25%;
+                margin: auto;
+                background-color: yellow;
+                padding: 0.5rem;
+                border: 2px solid green;
+            }
+            h2{
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            label{
+                display: block;
+                margin: 0.5rem;
+            }
+            select,input{
+                width: 90%;
+                display: block;
+                padding: 0.25rem;
+                margin: 0.5rem;
+            }
+
+            form{
+                width: 30%;
+                margin:auto;
+                font-size: 1.25rem;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="admin.html">Admin Dashboard</a>
+        </nav>
+        <h2>Add a League</h2>
+        <div class="form-div">
+            <form action="">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="Name" minlength="5" maxlength="16" required>
+                <label for="season">Season</label>
+                <select id="season" name="season" required>
+                    <option value="" selected>-Select-</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Autumn">Autumn</option>
+                    <option value="Winter">Winter</option>
+                </select>
+                <label for="year">Year</label>
+                <input type="number" id="year" name="year" min="2024" required>
+                <input type="button" onclick="mySubmit()" value="Submit form">
+            </form>
+        </div>
+        <script>
+            function mySubmit(){
+                let name = document.getElementById("name").value;
+                let season = document.getElementById("season").value;
+                let year = document.getElementById("year").value;
+                console.log(name, season,year);
+                if (name.length=="") {
+                    alert("Please provide a proper name");
+                }
+                else if(season==""){
+                    alert("Please provide a valid season");
+                }
+                else if(year!=2024){
+                    alert("Please provide a valid year");
+                }
+                else {
+                    // perform operation with form input
+                    alert(`Registration Successful for Player: ${name} in Leageue:${season} in year: ${year}`);
+                }
+            }
+        </script>
+    </body>
+</html>
