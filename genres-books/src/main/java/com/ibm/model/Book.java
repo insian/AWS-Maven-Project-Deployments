@@ -44,6 +44,6 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [isbnNo=" + isbnNo + ", bookTitle=" + bookTitle + ", bookAuthor=" + bookAuthor + ", genreId=" + genre.getGenreId() 
-		+ ", genreName=" + genre.getGenreName()  + ", genreShelfNo=" + genre.getShelfNo() + "]";
+		+ ", genreName=" + genre.getGenreName() + "]";
 	}
 }

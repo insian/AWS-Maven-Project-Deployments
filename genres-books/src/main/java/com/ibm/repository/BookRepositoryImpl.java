@@ -41,6 +41,7 @@ public class BookRepositoryImpl implements BookRepository{
 	public Genre findGenreById(int genreId) {
 		session = sessionFactory.openSession();
 		Genre genre = session.find(Genre.class, genreId);
+		session.close();
 		return genre;
 	}
 	
@@ -66,7 +67,6 @@ public class BookRepositoryImpl implements BookRepository{
 			session.getTransaction().commit();
 			return true;
 		} catch(Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 	}
@@ -88,26 +88,43 @@ public class BookRepositoryImpl implements BookRepository{
 	
 	@Override
 	public List<Book> getAllBooks() {
-		// TODO Auto-generated method stub
-		return null;
+		session = sessionFactory.openSession();
+		TypedQuery<Book> query = session.createQuery("FROM Book b",Book.class);
+		return query.getResultList();
 	}
 
 	@Override
 	public Book findBookById(int bookId) {
-		// TODO Auto-generated method stub
-		return null;
+		session = sessionFactory.openSession();
+		Book book = session.find(Book.class, bookId);
+		session.close();
+		return book;
 	}
 
 	@Override
-	public Book updateBookById(Book book) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean updateBookById(Book book) {
+		try {
+			session = sessionFactory.openSession();
+			session.getTransaction().begin();
+			session.merge(book);
+			session.getTransaction().commit();
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 
 	@Override
 	public Boolean deleteBookById(Book book) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			session = sessionFactory.openSession();
+			session.getTransaction().begin();
+			session.remove(book);
+			session.getTransaction().commit();
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 
 

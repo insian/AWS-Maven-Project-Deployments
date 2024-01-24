@@ -77,7 +77,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Book updateBookById(Book book) {
+	public Boolean updateBookById(Book book) {
 		// TODO Auto-generated method stub
 		return bookRepo.updateBookById(book);
 	}

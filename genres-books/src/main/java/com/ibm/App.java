@@ -37,8 +37,8 @@ public class App
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}
-    	*/
+		}*/
+    	
     	
     	//Show All Genres
     	/*try {
@@ -87,7 +87,6 @@ public class App
 		}*/
     	
     	
-    	//Not Completed
     	//Delete Genre By Id
     	try {
     		System.out.println("Enter Genre Id");
@@ -95,8 +94,11 @@ public class App
 			if(genre==null) {
 				System.out.println("Invalid Genre Id");
 			} else {
-				System.out.println(genre);
-				bookService.deleteGenreById(genre);
+				if(bookService.deleteGenreById(genre)) {
+					System.out.println("Deleted Successfully");
+				} else {
+					System.out.println("Deletion Unsuccessful");
+				}
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -118,12 +120,79 @@ public class App
 				System.out.println("Enter Book Author");
 				book.setBookAuthor(br.readLine());
 				bookService.addBook(book);
+				System.out.println(book);
 			}    		
 		} catch (Exception e) {
 			// TODO: handle exception
 		}*/
     	
     	
+    	//Show All Books
+    	/*try {
+			for(Book b: bookService.getAllBooks()) {
+				System.out.println(b);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}*/
+    	
+    	//Find Book by Id
+    	/*try {
+    		System.out.println("Enter Book Id");
+			book = bookService.findBookById(Integer.parseInt(br.readLine()));
+			if(book==null) {
+				System.out.println("Invalid Book Id");
+			} else {
+				System.out.println(book);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}*/
+    	
+    	
+    	//Update Book By Id
+    	/*try {
+    		System.out.println("Enter Book Id");
+			book = bookService.findBookById(Integer.parseInt(br.readLine()));
+			if(book==null) {
+				System.out.println("Invalid Book Id");
+			} else {
+				System.out.println("Enter Book Title");
+				book.setBookTitle(br.readLine());
+				System.out.println("Enter Book Author");
+				book.setBookAuthor(br.readLine());
+				if(bookService.updateBookById(book)) {
+					System.out.println("Updated Successfully "+book);
+				} else {
+					System.out.println("Updated Not Successfully");
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}*/
+    	
+    	
+    	//Delete Book By Id
+    	/*try {
+    		System.out.println("Enter Book Id");
+			book = bookService.findBookById(Integer.parseInt(br.readLine()));
+			if(book==null) {
+				System.out.println("Invalid Book Id");
+			} else {
+				book.setGenre(null);
+				if(bookService.deleteBookById(book)) {
+					System.out.println("Deleted Successfully");
+				} else {
+					System.out.println("Deletion Unsuccessful");
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}*/
     }
     
 }
